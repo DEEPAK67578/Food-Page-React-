@@ -1,0 +1,22 @@
+.priceAdder {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 1000px;
+  }
+
+  .priceAdder button {
+    border: 1px solid gray;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background:none;
+    color: #521801;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+  }
+  
+  .priceAdder button:hover {
+    background-color: #521801;
+    color: white
+  }

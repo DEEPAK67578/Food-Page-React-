@@ -1,0 +1,93 @@
+.cart-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 20rem;
+    overflow: auto;
+  }
+  
+  .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .actions button {
+    font: inherit;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid #8a2b06;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+  }
+  
+  .actions button:hover,
+  .actions button:active {
+    background-color: #5a1a01;
+    border-color: #5a1a01;
+    color: white;
+  }
+  
+  .actions .button--alt {
+    color: #8a2b06;
+  }
+  
+  .actions .button {
+    background-color: #8a2b06;
+    color: white;
+  }
+
+  .cartlist h3 {
+       font-size: 30px;
+       margin: 0;
+  }
+
+  .cartlist span {
+    color: #521801;
+    font-weight: bold;
+  }
+
+  .priceQuantityContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+   
+  .priceQuantityContainer p {
+    border: 1px solid gray;
+    padding: 5px 10px;
+    margin:0 30px;
+    border-radius: 10px;
+  }
+
+  .priceAdder {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .priceAdder button {
+    border: 1px solid gray;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background:none;
+    color: #521801;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+  }
+  
+  .priceAdder button:hover {
+    background-color: #521801;
+    color: white
+  }
