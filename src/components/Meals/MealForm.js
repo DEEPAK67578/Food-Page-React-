@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import "./MealFrom.module.css";
 import { CartItems } from "../../store/Data.context";
-let quan = 0;
 let arrItems = [];
 let itemCount = 0;
 const MealForm = (props) => {
@@ -10,9 +9,7 @@ const MealForm = (props) => {
     event.preventDefault();
     console.log(event);
     const value = event.target[0].value;
-    quan = quan + +value;
     itemCount = +value;
-    cartItems.quantity(quan);
     const getIndex = arrItems.findIndex(
       (val) => val.dishName === props.dishName
     );
@@ -28,8 +25,19 @@ const MealForm = (props) => {
     if(getIndex >= 0) {
       arrItems[getIndex].quantity = arrItems[getIndex].quantity + itemCount
     }
-    console.log(arrItems)
-  cartItems.items(arrItems)
+
+    const IndividualQuantity = arrItems.map((val)=> {
+      return val.quantity
+    })
+
+    const quan = IndividualQuantity.reduce((pre,cur)=> {
+      return pre + cur
+    },0)
+
+    cartItems.quantity(quan)
+    cartItems.items(arrItems)
+    console.log(cartItems.itemsData)
+    console.log(cartItems.quantityData)
   }
     return (
       <form onSubmit={itemAddHandler}>

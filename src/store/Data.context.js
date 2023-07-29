@@ -11,6 +11,7 @@ export const CartItems = createContext({
 const Items = (props) => {
   const [quantity,setQuantity] = useState(0);
   const[items,setItems] = useState([])
+  
   function seter(value) {
     setQuantity(value)
   }

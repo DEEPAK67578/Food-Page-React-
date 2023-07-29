@@ -8,7 +8,7 @@ const QuantityAdderForm = (props) => {
   function Add(event) {
     event.preventDefault();
     const Index = ctx.itemsData.findIndex((val) => {
-      return (val.dishName === props.dishName);
+      return val.dishName === props.dishName;
     });
 
     ctx.itemsData[Index].quantity = props.quantity + 1;
@@ -18,11 +18,16 @@ const QuantityAdderForm = (props) => {
   function Sub(event) {
     event.preventDefault();
     const Index = ctx.itemsData.findIndex((val) => {
-      return (val.dishName === props.dishName);
+      return val.dishName === props.dishName;
     });
-
-    ctx.itemsData[Index].quantity = props.quantity - 1;
-    ctx.quantity(ctx.quantityData - 1);
+    if (Index >= 0) {
+      if (ctx.itemsData[Index].quantity === 0) {
+        ctx.itemsData.splice(Index, 1);
+      } else if (ctx.itemsData[Index].quantity > 0) {
+        ctx.itemsData[Index].quantity = props.quantity - 1;
+        ctx.quantity(ctx.quantityData - 1);
+      }
+    }
   }
 
   return (

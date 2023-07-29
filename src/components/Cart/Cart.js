@@ -3,39 +3,33 @@ import classes from "./Cart.module.css";
 import Modal from "./Modal";
 import QuantityAdderForm from "./QuantityAdderForm";
 import { CartItems } from "../../store/Data.context";
-
+let quan = 0;
 const Cart = (props) => {
   const ctx = useContext(CartItems);
-  const IndividualTotalPrice = ctx.itemsData.map((val)=> {
-    return val.quantity * val.dishPrice
-  })
+  const IndividualTotalPrice = ctx.itemsData.map((val) => {
+    return val.quantity * val.dishPrice;
+  });
   let Total = 0;
-  for(const val of IndividualTotalPrice) {
-    Total = Total + val
+  for (const val of IndividualTotalPrice) {
+    Total = Total + val;
   }
 
-  console.log(Total)
-  const cartItems = (
-    <ul className={classes["cart-items"]}>
-      {ctx.itemsData.map((item) => (
-        <li className={classes.cartlist}>
-          <h3>{item.dishName}</h3>
-          <div className={classes.priceQuantityContainer}>
-            <span>${item.dishPrice}</span>
-            <p>x{item.quantity}</p>
-            <QuantityAdderForm quantity={item.quantity} dishName={item.dishName}/>
-          </div>
-          
-          <hr></hr>
-        </li>
-      ))}
-    </ul>
-  );
+  const data = ctx.itemsData.map((item) => (
+    Boolean(item.quantity) && <li className={classes.cartlist}>
+      <h3>{item.dishName}</h3>
+      <div className={classes.priceQuantityContainer}>
+        <span>${item.dishPrice}</span>
+        <p>x{item.quantity}</p>
+        <QuantityAdderForm quantity={item.quantity} dishName={item.dishName} />
+      </div>
+      <hr></hr>
+    </li>
+  ));
+  const cartItems = <ul className={classes["cart-items"]}>{data}</ul>;
 
   function modalCloser() {
     props.modalCloser();
   }
-  console.log(props);
   return (
     <Modal modalCloser={props.modalCloser} display={props.display}>
       {cartItems}
